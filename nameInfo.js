@@ -13,6 +13,8 @@ async function getCountries() {
             li.innerText = unAbbreviate(e.country_id) + ": " + Math.trunc(e.probability * 10000) / 100 + "%";
             list.appendChild(li);
         })
+        // Original API gives country code SQ when looking up "Zhang". This is not a valid country code and
+        // is not even present on the API's own abbreviation to country name translation page. 
     } catch (error) {
         console.log(error);  
     }
@@ -27,6 +29,7 @@ function unAbbreviate(abbrv){
     }
 }
 
+// ISO 3166-1 alpha-2 codes
 let countryCodes = {
     "BD": "Bangladesh",
     "BE": "Belgium",
